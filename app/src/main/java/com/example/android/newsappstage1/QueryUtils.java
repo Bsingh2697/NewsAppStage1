@@ -37,14 +37,19 @@ public final class QueryUtils {
 
     public static List<News> fetchNewsData(String requestUrl){
         URL url = createUrl(requestUrl);
+        try {
+            Thread.sleep(2000);
+        }catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         String jsonResponse = null;
         try{
             jsonResponse = makeHttpRequest(url);
         }catch(IOException e){
             Log.e(LOG_TAG,"Problem making the HTTP request.",e);
         }
-        List<News> news = extractFeatureFromJson(jsonResponse);
-        return news;
+        return extractFeatureFromJson(jsonResponse);
     }
     /**
      * Return a list of {@link News} objects that hahs been built up from
@@ -58,6 +63,7 @@ public final class QueryUtils {
         List<News> news = new ArrayList<>();
         try{
             JSONObject baseJsonResonse = new JSONObject(newsJSON);
+            // Extract the rot object
             JSONObject response = baseJsonResonse.getJSONObject("response");
             JSONArray results = response.getJSONArray("results");
             for(int i=0;i<results.length();i++)
@@ -96,13 +102,14 @@ public final class QueryUtils {
 
     private static String makeHttpRequest(URL url)throws  IOException{
         String jsonResponse="";
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
         //If the URL is null, then return early
         if(url == null)
         {
             return null;
         }
-        HttpURLConnection urlConnection = null;
-        InputStream inputStream = null;
+
         try{
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setReadTimeout(10000);

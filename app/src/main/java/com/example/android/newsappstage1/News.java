@@ -8,8 +8,7 @@ public class News {
 
     private String url;
 
-    public News(String section, String title, long timeInMilli, String url)
-    {
+    public News(String section, String title, long timeInMilli, String url) {
       this.section=section;
       this.title=title;
       this.timeInMilli=timeInMilli;
