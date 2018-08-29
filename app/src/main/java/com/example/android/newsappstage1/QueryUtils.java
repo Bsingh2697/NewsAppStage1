@@ -71,7 +71,7 @@ public final class QueryUtils {
                 JSONObject currentNews = results.getJSONObject(i);
                 String sectionName = currentNews.getString("sectionName");
                 String webTitle = currentNews.getString("webTitle");
-                long webPublicationDate = currentNews.getLong("webPublicationDate");
+                String webPublicationDate = currentNews.getString("webPublicationDate");
                 String url = currentNews.getString("webUrl");
                 News extractedNews = new News(sectionName,webTitle,webPublicationDate,url);
                 news.add(extractedNews);
@@ -155,4 +155,5 @@ public final class QueryUtils {
         }
         return output.toString();
     }
+
 }

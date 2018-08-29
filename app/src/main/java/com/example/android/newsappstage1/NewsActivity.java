@@ -29,7 +29,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_item);
+        setContentView(R.layout.news_list);
 
         //Find a reference to the {@link ListView} in the layout
         ListView newsListView = findViewById(R.id.news_list);

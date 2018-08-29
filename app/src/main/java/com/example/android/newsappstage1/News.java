@@ -4,11 +4,11 @@ public class News {
 
     private String section;
     private String title;
-    private long timeInMilli;
+    private String timeInMilli;
 
     private String url;
 
-    public News(String section, String title, long timeInMilli, String url) {
+    public News(String section, String title, String timeInMilli, String url) {
       this.section=section;
       this.title=title;
       this.timeInMilli=timeInMilli;
@@ -23,7 +23,7 @@ public class News {
         return title;
     }
 
-    public long getTimeInMilli() {
+    public String getTimeInMilli() {
         return timeInMilli;
     }
 
