@@ -24,7 +24,7 @@ public class News {
     }
 
     public String getTimeInMilli() {
-        return timeInMilli;
+        return String.valueOf(timeInMilli);
     }
 
     public String getUrl() {

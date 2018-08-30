@@ -2,4 +2,5 @@
     <string name="app_name">NewsAppStage1</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="no_news">No NEWS</string>
+    <string name="news_wrap"><u>NEWS WRAP</u></string>
 </resources>

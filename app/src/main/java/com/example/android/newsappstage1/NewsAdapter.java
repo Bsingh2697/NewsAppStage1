@@ -17,6 +17,8 @@ import java.util.Date;
 
 public class NewsAdapter extends ArrayAdapter<News> {
 
+    private String dateTime;
+
     public NewsAdapter(@NonNull Context context, ArrayList<News> objects) {
         super(context, 0, objects);
     }
@@ -36,33 +38,23 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView sectionView = listItemView.findViewById(R.id.section);
         sectionView.setText(currentNews.getSection());
 
+
         // Find the textView with id title
         TextView titleView = listItemView.findViewById(R.id.title);
         titleView.setText(currentNews.getTitle());
 
-        // Create a new Date Object from the time in milliseconds of the earthquake
-        Date dateObject = new Date(currentNews.getTimeInMilli());
+        dateTime = currentNews.getTimeInMilli();
+        String arrOfDateTime[] = dateTime.split("T");
 
         // Find the textView with id date
         TextView dateView = listItemView.findViewById(R.id.date);
-        String formattedDate = formatDate(dateObject);
-        dateView.setText(formattedDate);
+        dateView.setText(arrOfDateTime[0]);
 
         TextView timeView = listItemView.findViewById(R.id.time);
-        String formattedTime = formatTime(dateObject);
-        timeView.setText(formattedTime);
+        timeView.setText(arrOfDateTime[1].replace('Z',' '));
 
         return listItemView;
     }
 
-    private String formatDate(Date dateObject)
-    {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd,yyy");
-        return dateFormat.format(dateObject);
-    }
-    private String formatTime(Date dateObject)
-    {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
-    }
+
 }
