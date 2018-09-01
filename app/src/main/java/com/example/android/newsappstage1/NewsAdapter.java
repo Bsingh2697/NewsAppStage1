@@ -53,8 +53,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView timeView = listItemView.findViewById(R.id.time);
         timeView.setText(arrOfDateTime[1].replace('Z',' '));
 
+        TextView authorView = listItemView.findViewById(R.id.author);
+        authorView.setText(currentNews.getAuthor());
+
         return listItemView;
     }
-
 
 }

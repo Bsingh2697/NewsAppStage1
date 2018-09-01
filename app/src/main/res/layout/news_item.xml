@@ -4,45 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NewsActivity"
-    android:paddingTop="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".NewsActivity">
 
     <TextView
         android:id="@+id/section"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Section"
-        android:textSize="10sp"
         android:layout_gravity="end"
-        android:textColor="#ffff"
         android:layout_marginRight="16dp"
-        android:background="@drawable/category" />
+        android:background="@drawable/category"
+        android:textColor="#ffff"
+        android:textSize="10sp"
+        tools:text="Section" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="The title goes here"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:text="The title goes here" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        tools:text="Author" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="5dp">
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Date"
-        android:textSize="10sp"/>
-    <TextView
-        android:id="@+id/time"
-        android:gravity="end"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Time"
-        android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            tools:text="Date" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="10sp"
+            tools:text="Time" />
     </LinearLayout>
 
 </LinearLayout>
