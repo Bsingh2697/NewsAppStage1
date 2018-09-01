@@ -73,11 +73,11 @@ public final class QueryUtils {
                     String webTitle = currentNews.getString("webTitle");
                     String webPublicationDate = currentNews.getString("webPublicationDate");
                     String url = currentNews.getString("webUrl");
-                    JSONArray tags = currentNews.optJSONArray("tags");
+                    JSONArray tags = currentNews.getJSONArray("tags");
                     String authorName = "";
                     if (tags != null && tags.length() > 0) {
                        JSONObject authorProfile = (JSONObject) tags.get(0);
-                        authorName = authorProfile.optString("webTitle");
+                        authorName = authorProfile.getString("webTitle");
                     }
 
                     News extractedNews = new News(sectionName,webTitle,webPublicationDate,url,authorName);

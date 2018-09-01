@@ -13,6 +13,7 @@ public class News {
       this.title=title;
       this.timeInMilli=timeInMilli;
       this.url=url;
+      this.author=author;
     }
 
     public String getSection() {
