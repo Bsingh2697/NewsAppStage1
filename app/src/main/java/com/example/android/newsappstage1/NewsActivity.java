@@ -2,15 +2,19 @@ package com.example.android.newsappstage1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -66,10 +70,38 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.action_settings)
+        {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     @NonNull
     @Override
     public Loader<List<News>> onCreateLoader(int id, @Nullable Bundle args) {
-        return  new NewsLoader(this,GUARDIAN_URL);
+
+        SharedPreferences sharedPrefs  = PreferenceManager.getDefaultSharedPreferences(this);
+        String order =  sharedPrefs.getString(getString(R.string.order_by_key),getString(R.string.default_order));
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(GUARDIAN_URL);
+        //buildUpon prepares the baseUri that we just parsed so we can add query parameter to it
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+        //Append query parameter and its values
+        uriBuilder.appendQueryParameter("order_by",order);
+
+        return  new NewsLoader(this,uriBuilder.toString());
     }
 
     @Override

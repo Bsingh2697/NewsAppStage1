@@ -5,4 +5,17 @@
     // When application couldn't find news
     <string name="no_news">No results found. Please try later</string>
     <string name="news_wrap"><u>NEWS WRAP</u></string>
+    //For settings activity
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+    //Strings for Order by option preference
+    <string name="default_order"></string>
+    <string name="order_by_label">Order By</string>
+    <string name="order_by_key">order_by</string>
+    //Label for order by newest option
+    <string name="newest_label">Newest</string>
+    <string name="newest_value">newest</string>
+    //Label for order by oldest option
+    <string name="oldest_label">Oldest</string>
+    <string name="oldest_value">oldest</string>
 </resources>
